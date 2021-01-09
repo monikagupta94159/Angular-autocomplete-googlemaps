@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-bootstrap-autocomplete"
+    }
+  },
+  "defaultProject": "angular-bootstrap-autocomplete",
+  "cli": {
+    "analytics": "47c586ef-4299-4222-ab81-f5cb9be72225"
+  }
 }
