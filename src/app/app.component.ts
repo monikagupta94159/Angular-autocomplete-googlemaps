@@ -1,42 +1,35 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, NgZone, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import {NgbTypeahead, NgbTypeaheadSelectItemEvent} from '@ng-bootstrap/ng-bootstrap';
 import {debounceTime, distinctUntilChanged, filter, map} from 'rxjs/operators';
 import { DataService } from './data.service';
-
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, OnChanges{
+export class AppComponent implements OnInit{
   title = 'angular-bootstrap-autocomplete';
   selectedState: string;
   selectedCity: string;
   states = [];
   cities = [];
   jsonData:any;
-  model:any
+  model:any;
   public stateSearch: any;
   public citySearch: any;
-  constructor(private data: DataService){
-   
-  }
-  ngOnChanges(changes: SimpleChanges): void {
-    // this.selectState();
-    // this.selectCities();
-  }
+  constructor(private data: DataService){}
  
   ngOnInit() {
     this.data.getData().subscribe(res => {
-       this.jsonData = res['states'];
-      this.jsonData.forEach(ele => {
-           return this.states.push(ele.state);
-          });
-    })
+      this.jsonData = res['states'];
+     this.jsonData.forEach(ele => {
+          return this.states.push(ele.state);
+         });
+   })
      this.selectState();
-    this.selectCities();
+     this.selectCities();
   }
 
   selectState(){
